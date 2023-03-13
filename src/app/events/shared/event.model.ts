@@ -1,5 +1,5 @@
 export interface IEvent {
-    id: number,
+    id: number | undefined,
     name: string, 
     date: Date,
     time: string, 
