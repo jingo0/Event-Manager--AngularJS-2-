@@ -1,4 +1,4 @@
-import { Component, Input , OnChanges, SimpleChanges} from "@angular/core";
+import { Component, Input , OnChanges } from "@angular/core";
 import { ISession } from "../shared/index";
 
 @Component({
@@ -9,14 +9,16 @@ import { ISession } from "../shared/index";
 export class SessionListComponent implements OnChanges{
     
     @Input() sessions! : ISession[];
-    @Input() filterBy :string ='all';
+    @Input() filterBy! :string ;
+    @Input() sortBySessionList! : string;
+
     visibleSession:ISession[] = [];
 
     ngOnChanges() {
         if(this.sessions)
         {
-            console.log(this.filterBy)
             this.filterSession(this.filterBy);
+            this.sortBySessionList === 'name' ? this.visibleSession.sort(sortByName) : this.visibleSession.sort(sortByVotes)
         }
     }
 
@@ -34,4 +36,16 @@ export class SessionListComponent implements OnChanges{
         }
     }
 
+}
+
+function sortByName(s1: ISession, s2:ISession)
+{
+    if(s1.name > s2.name) return 1
+    else if(s1.name === s2.name) return 0
+    else return -1
+}
+
+function sortByVotes(s1: ISession, s2:ISession)
+{
+    return s2.voters.length - s1.voters.length
 }

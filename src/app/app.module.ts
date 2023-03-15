@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { TaoastrService } from './common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -22,6 +22,8 @@ import { appRoutes } from './routes';
 import { Error404Component } from './error/404.component';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { AuthService } from './user/auth.service';
+
+declare let toastr:Toastr
 
 @NgModule({
   declarations: [
@@ -46,7 +48,10 @@ import { AuthService } from './user/auth.service';
   ],
   providers: [
     EventService, 
-    TaoastrService, 
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    }, 
     EventRouteActivator,
     {
       provide:'canDeactivateCreateEvent', 

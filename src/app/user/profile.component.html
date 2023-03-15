@@ -3,9 +3,9 @@
     <hr>
     <div class="col-md-4">
       <form [formGroup] = "profileForm" (ngSubmit)="saveProfile(profileForm.value)" autocomplete="off" novalidate>
-        <div class="form-group" [ngClass]="{'error' : !validateFirstName() }">
+        <div class="form-group" [ngStyle]="{'error' : true }">
           <label for="firstName">First Name:</label>
-          <em *ngIf="!validateFirstName() && profileForm.get('firstName')?.errors!['required'] ">Required</em>
+          <em *ngIf="!validateFirstName() && profileForm.controls['firstName']?.errors!['required'] ">Required</em>
           <em *ngIf="!validateFirstName() && profileForm.controls['firstName']?.errors!['pattern'] ">Must Start with a Letter </em>
           <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name..." required />
         </div>

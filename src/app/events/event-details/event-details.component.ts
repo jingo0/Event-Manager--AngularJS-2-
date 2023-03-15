@@ -17,6 +17,7 @@ export class EventDetailsComponent
     event:any
     addMode!: boolean
     filterBy: string = 'all';
+    sortByEventDetails: string = 'name';
     constructor(private eventService: EventService, private route:ActivatedRoute){}
     
     ngOnInit()

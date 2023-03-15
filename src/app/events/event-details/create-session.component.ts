@@ -7,7 +7,7 @@ import { ISession } from "../shared";
     selector: 'create-session',
     templateUrl:`./create-session.component.html`,
     styles: [`
-  em {float:right; color:#E05c65; padding-left:10px;},
+   em {float:right; color:#E05c65; padding-left:10px;},
   .error input, .error select, .error textarea {background-color: #E3C3C5 !important;},
   .error :: -webkit-input-placeholder {color: #999;}
   .error :: -moz-placeholder {color: #999;}
