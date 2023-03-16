@@ -23,7 +23,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './error/404.component';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { AuthService } from './user/auth.service';
-import { JQ_TOKEN, TOASTR_TOKEN, Toastr, simpleModalComponent, ModalTriggerDirective } from './common/index';
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, simpleModalComponent, ModalTriggerDirective, LocationValidator } from './common/index';
 
 declare let toastr : Toastr; 
 declare let jQuery:any;
@@ -43,7 +43,8 @@ declare let jQuery:any;
     DurationPipe,
     simpleModalComponent,
     ModalTriggerDirective,
-    upvoteComponent
+    upvoteComponent,
+    LocationValidator
   ],
   imports: [
     BrowserModule,

@@ -6,8 +6,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
     <div class="votingWidgetContainer pointable" (click) = "onClick()">
         <div class="well votingWidget">
             <div class="votingButton">
-                <i *ngIf="voted" class="glyphicon glyphicon-heart"></i>
-                <i *ngIf="!voted" class="glyphicon glyphicon-heart-empty"></i>
+                <i class="glyphicon glyphicon-heart" [style.color]="iconColor"></i>
                 <div>
                     <div class="badge badge-inverse votinCount">
                         <div> {{count}} </div>
@@ -24,10 +23,12 @@ export class upvoteComponent
 {
     @Input()
     count!: number;
+    iconColor!: string;
     @Input()
-    voted!: boolean;
+    set voted(val: any){
+        this.iconColor = val ? 'red' : 'white';
+    }
     @Output() vote = new EventEmitter();
-    
     onClick()
     {
         this.vote.emit();
