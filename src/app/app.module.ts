@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   EventThumbnailComponent,
@@ -16,12 +17,12 @@ import {
   DurationPipe,
   upvoteComponent,
   VoterService,
+  EventResolver,
 } from './events/index'
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { appRoutes } from './routes';
 import { Error404Component } from './error/404.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { AuthService } from './user/auth.service';
 import { JQ_TOKEN, TOASTR_TOKEN, Toastr, simpleModalComponent, ModalTriggerDirective, LocationValidator } from './common/index';
 
@@ -51,6 +52,7 @@ declare let jQuery:any;
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule
     
   ],
   providers: [
@@ -59,7 +61,7 @@ declare let jQuery:any;
       provide: TOASTR_TOKEN,
       useValue: toastr
     }, 
-    EventRouteActivator,
+    EventResolver,
     {
       provide:'canDeactivateCreateEvent', 
       useValue: checkDirtyStates

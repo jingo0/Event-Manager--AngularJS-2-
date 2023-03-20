@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router'
 import { EventService } from './shared/events.service'
-import {map} from 'rxjs/operators'
 
 @Injectable()
 export class EventListResolver implements Resolve<any> 
@@ -12,6 +11,6 @@ export class EventListResolver implements Resolve<any>
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return this.eventService.getEvents().pipe(map(events=>events))
+        return this.eventService.getEvents()
     }
 }
