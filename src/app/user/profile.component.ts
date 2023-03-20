@@ -47,7 +47,10 @@ export class ProfileComponent implements OnInit{
     if(this.profileForm.valid)
     {
       this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
-      this.toastr.success("Profile Saved!!")
+      .subscribe( () => {
+        this.toastr.success("Profile Saved!!");
+      })
+      
     }
   }
 
@@ -59,6 +62,14 @@ export class ProfileComponent implements OnInit{
   validateLastName() : boolean
   {
     return this.lastName?.valid || this.lastName?.untouched
+  }
+
+  logOut()
+  {
+    this.authService.logOut().subscribe( () => 
+    {
+      this.router.navigate(['user/login']);
+    })
   }
 
 }
