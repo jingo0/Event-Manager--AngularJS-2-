@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from "@angular/core"
-import { catchError, Observable, of } from 'rxjs'
+import { catchError, Observable, of, Subject } from 'rxjs'
 import { IEvent, ISession } from "./event.model";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -32,6 +32,7 @@ export class EventService{
       let options = { headers: new HttpHeaders({"Content-Type" : 'application/json'})}
       return this.http.post<IEvent>('/api/events', event, options)
       .pipe(catchError(this.handleError<IEvent>('saveEvent')))
+      
     }
 
     searchSessions(searchTerm:string):Observable<ISession[]>

@@ -31,6 +31,7 @@ export class EventListComponent
     
     ngOnInit()
     {
+        console.log("event-list called")
       this.events = this.route.snapshot.data['events']
     }
 }

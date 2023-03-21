@@ -72,7 +72,7 @@ declare let jQuery:any;
       provide: JQ_TOKEN,
       useValue: jQuery
     },
-    VoterService
+    VoterService,
   ],
   bootstrap: [EventsAppComponent]})
 export class AppModule { }

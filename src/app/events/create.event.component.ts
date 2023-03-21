@@ -28,8 +28,9 @@ export class CreateEventComponent
     }
 
     saveEvent(formValues:any){        
-        this.eventService.saveEvent(formValues).subscribe(() => {
+        this.eventService.saveEvent(formValues).subscribe(() => {            
             this.router.navigate(['/events'])
+            setTimeout(() => window.location.reload(),100); //temp fix     
             this.isDirty=false
         })        
     }
