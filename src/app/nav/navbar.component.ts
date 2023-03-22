@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, HostListener, Input, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { EventService, IEvent, ISession } from '../events';
@@ -33,8 +33,14 @@ export class NavBarComponent implements OnInit
 
     ngOnInit() 
     {
-        console.log("navbar called")
+        console.log("ngOnIntit called")
         this.eventService.getEvents()
           .subscribe(events => this.events = events);
     }
+
+    @HostListener("click") onClick(){
+        
+        this.eventService.getEvents().subscribe(events => this.events = events);
+      }
+    
 }
